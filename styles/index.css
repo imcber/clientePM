@@ -1,0 +1,11 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  background-color: #ffffff;
+}
+
+.sidebar {
+  background-color: #073b4c;
+}
