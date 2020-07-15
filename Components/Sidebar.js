@@ -6,7 +6,7 @@ const Sidebar = () => {
     <div className="sm:min-h-screen sidebar">
       <div className="flex xl:w-64 p-4 h-full">
         <ul className="flex flex-col w-full">
-          <span className="flex justify-center items-center pb-4">
+          <span className="flex justify-center items-center py-8">
             <img src="/logo_large.png" alt="Logo" className="w-32" />
           </span>
           <ItemSidebar
@@ -37,12 +37,6 @@ const Sidebar = () => {
             text="Pedidos"
             pathD="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
           />
-          <ItemSidebar
-            target="#"
-            text="Nueva pedido"
-            pathD="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-            type="success"
-          />
           <TextSideBar text={"Cuenta"} />
           <ItemSidebar
             target="#"
@@ -54,6 +48,7 @@ const Sidebar = () => {
             text="Cerrar sesion"
             pathD="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
             type="error"
+            extraClass="mt-auto"
           />
         </ul>
       </div>

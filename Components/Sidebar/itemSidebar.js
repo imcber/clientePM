@@ -1,12 +1,12 @@
 import React from "react";
 
-const ItemSidebar = ({ target, text, pathD, notif, type }) => {
+const ItemSidebar = ({ target, text, pathD, notif, type, extraClass }) => {
   let iconColor = getTypeText(type);
   return (
-    <li className="my-px">
+    <li className={`my-px ${extraClass}`}>
       <a
         href={target ? target : "#"}
-        className={`flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100 ${iconColor}`}
+        className={`flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100 ${iconColor} `}
       >
         <span className="flex items-center justify-center ">
           <svg
