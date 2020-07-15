@@ -1,7 +1,11 @@
 import React from "react";
 import { ItemSidebar, TextSideBar } from "./Sidebar/itemSidebar";
+import { useRouter } from "next/router";
 
 const Sidebar = () => {
+  //routing de next
+  const router = useRouter();
+  const { pathname } = router;
   return (
     <div className="sm:min-h-screen sidebar">
       <div className="flex xl:w-64 p-4 h-full">
@@ -10,7 +14,7 @@ const Sidebar = () => {
             <img src="/logo_large.png" alt="Logo" className="w-32" />
           </span>
           <ItemSidebar
-            target="#"
+            target="/"
             text="Dashboard"
             pathD="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
           />

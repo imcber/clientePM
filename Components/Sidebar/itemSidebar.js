@@ -1,12 +1,17 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 const ItemSidebar = ({ target, text, pathD, notif, type, extraClass }) => {
+  //routing de next
+  const router = useRouter();
+  const { pathname } = router;
   let iconColor = getTypeText(type);
+  const actualPath = target === pathname ? "bg-gray-100" : "";
   return (
     <li className={`my-px ${extraClass}`}>
       <a
         href={target ? target : "#"}
-        className={`flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100 ${iconColor} `}
+        className={`flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100 ${iconColor} ${actualPath}`}
       >
         <span className="flex items-center justify-center ">
           <svg
