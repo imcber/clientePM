@@ -7,7 +7,7 @@ const Sidebar = () => {
   const router = useRouter();
   const { pathname } = router;
   return (
-    <div className="sm:min-h-screen sidebar">
+    <div className="sm:min-h-screen sidebar sm:w-1/4 xl:w-1/6">
       <div className="flex xl:w-64 p-4 h-full">
         <ul className="flex flex-col w-full">
           <span className="flex justify-center items-center py-8">

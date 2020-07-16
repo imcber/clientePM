@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Pagination from "./Pagination";
 import { gql, useQuery } from "@apollo/client";
 import moment from "moment";
 
+//Query to get less products
 const LESS_PRODUCTS = gql`
-  query getLessProducts {
-    getLessProducts {
+  query getLessProducts($page: Int) {
+    getLessProducts(page: $page) {
       id
       name
       amount
@@ -13,10 +14,28 @@ const LESS_PRODUCTS = gql`
     }
   }
 `;
+const LESS_PRODUCTS_COUNT = gql`
+  query getNumLessProducts {
+    getNumLessProducts
+  }
+`;
+
 const ProductGrid = () => {
-  const { loading, error, data } = useQuery(LESS_PRODUCTS);
+  //state of pagination
+  const [page, setPage] = useState(1);
+  //get count of all less producs for pagination
+  const dataCount = useQuery(LESS_PRODUCTS_COUNT);
+  //data of query
+  const { loading, error, data } = useQuery(LESS_PRODUCTS, {
+    variables: { page },
+  });
   if (loading) return "LOADING";
-  if (!data) return "ERROR";
+  if (error) return "ERROR";
+  if (!data) return "SIN DATA";
+  const {
+    data: { getNumLessProducts },
+  } = dataCount;
+  //Here we add status and color
   const listWithStatus = data.getLessProducts.map((item) => {
     const { restock } = item;
     const status = item.amount === 0 ? "Agotado" : "Quedan pocos";
@@ -30,7 +49,7 @@ const ProductGrid = () => {
   });
 
   return (
-    <div className="bg-white m-4 rounded-md h-1/2">
+    <div className="bg-white my-4 rounded-md h-1/2 w-full">
       <div className="flex justify-between w-full pt-6 ">
         <h2 className="ml-3">Estatus de productos</h2>
       </div>
@@ -62,7 +81,11 @@ const ProductGrid = () => {
           </tbody>
         </table>
       </div>
-      <Pagination />
+      <Pagination
+        handlePage={setPage}
+        numPage={page}
+        pages={getNumLessProducts}
+      />
     </div>
   );
 };
