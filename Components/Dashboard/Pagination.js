@@ -1,6 +1,6 @@
 import React from "react";
 
-const Paginacion = () => {
+const Pagination = () => {
   return (
     <div
       id="pagination"
@@ -49,4 +49,4 @@ const Paginacion = () => {
   );
 };
 
-export default Paginacion;
+export default Pagination;

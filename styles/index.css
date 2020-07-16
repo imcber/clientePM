@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway:wght@500&display=swap");
 
 body {
   background-color: #ffffff;
@@ -26,4 +27,13 @@ tbody tr td:first-child {
 tbody tr td:last-child {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 0px;
+}
+
+.main-container {
+  font-family: "Quicksand", sans-serif;
+}
+
+h1,
+h2 {
+  font-family: "Raleway", sans-serif;
 }
