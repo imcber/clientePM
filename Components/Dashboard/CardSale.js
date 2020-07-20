@@ -4,11 +4,13 @@ const CardSale = ({ data }) => {
   const { id, total, date, products } = data;
   console.log(products);
   return (
-    <div className="md:w-1/4 sm:w-full rounded-lg shadow-lg bg-white m-2 flex flex-col justify-between">
+    <div className="md:w-1/4 sm:w-full rounded-lg shadow-lg bg-white flex flex-col justify-between m-2">
       <div className="flex justify-between border-b border-gray-300 px-5 py-4">
         <span className="font-bold text-gray-700 text-lg">{`Venta realizada por $${total}`}</span>
       </div>
-      <div className="px-5 py-3 text-gray-600">{`${date}`}</div>
+      <div className="px-5 py-3 text-gray-600">
+        <p className="float-right">{`${date}`}</p>
+      </div>
 
       <div className="px-5 text-gray-600">
         {products.map(({ id, name, amount }) => (

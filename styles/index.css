@@ -37,3 +37,15 @@ h1,
 h2 {
   font-family: "Raleway", sans-serif;
 }
+
+.login-image {
+  background-color: #073b4c;
+}
+
+.login-form {
+  background-color: #ffd166;
+}
+
+.card-sale {
+  background-color: #ffd166;
+}

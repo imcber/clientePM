@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import { setContext } from "apollo-link-context";
 
 const httpLink = createHttpLink({
-  uri: "http://192.168.100.53:4000/graphql",
+  uri: "http://192.168.100.29:4000/graphql",
   fetch,
 });
 

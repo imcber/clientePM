@@ -29,9 +29,9 @@ const ProductGrid = () => {
   const { loading, error, data } = useQuery(LESS_PRODUCTS, {
     variables: { page },
   });
-  if (loading) return "LOADING";
-  if (error) return "ERROR";
-  if (!data) return "SIN DATA";
+  if (loading || dataCount.loading) return "LOADING";
+  if (error || dataCount.error) return "ERROR";
+  if (!data || !dataCount.data) return "SIN DATA";
   const {
     data: { getNumLessProducts },
   } = dataCount;
@@ -49,11 +49,11 @@ const ProductGrid = () => {
   });
 
   return (
-    <div className="bg-white my-4 rounded-md h-1/2 w-full">
-      <div className="flex justify-between w-full pt-6 ">
+    <div className="w-full h-auto">
+      <div className="flex justify-between w-full">
         <h2 className="ml-3">Estatus de productos</h2>
       </div>
-      <div className="overflow-x-auto mt-6">
+      <div className="overflow-x-auto mt-6 bg-white rounded-md">
         <table className="table-auto border-collapse w-full">
           <thead>
             <tr className="rounded-lg text-sm font-medium text-gray-700 text-left">
@@ -67,7 +67,7 @@ const ProductGrid = () => {
               ({ id, name, status, amount, restock, statusClass }) => (
                 <tr
                   key={id}
-                  className="hover:bg-gray-100 border-b border-gray-200 py-10"
+                  className="hover:bg-gray-100 border-b border-gray-200"
                 >
                   <td className="px-4 py-4">{name}</td>
                   <td
@@ -80,12 +80,12 @@ const ProductGrid = () => {
             <tr className="hover:bg-gray-100 border-b border-gray-200 py-10"></tr>
           </tbody>
         </table>
+        <Pagination
+          handlePage={setPage}
+          numPage={page}
+          pages={getNumLessProducts}
+        />
       </div>
-      <Pagination
-        handlePage={setPage}
-        numPage={page}
-        pages={getNumLessProducts}
-      />
     </div>
   );
 };
