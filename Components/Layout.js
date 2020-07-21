@@ -1,7 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "./SideBar";
+import { gql, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
+
+const GET_USER_QUERY = gql`
+  query getUser {
+    getUser {
+      profile {
+        name
+      }
+    }
+  }
+`;
 
 const Layout = ({ children, titlePage }) => {
+  //Verify token
+  const { data, loading, error } = useQuery(GET_USER_QUERY);
+  //Router
+  const router = useRouter();
+
+  /* useEffect(() => {
+    console.log(data);
+    console.log(localStorage);
+    if (!loading && (!data || !data.getUser)) {
+      localStorage.removeItem("token");
+      router.push("/login");
+    }
+  }); */
+  if (loading) return "Loading";
+  if (error) return "error";
+  if (!data) return "Redireccionando";
+  if (!data.getUser) {
+    localStorage.removeItem("token");
+    router.push("/login");
+    router.reload();
+    return "Redireccionando";
+  }
   return (
     <>
       <div className="bg-gray-200 h-screen">

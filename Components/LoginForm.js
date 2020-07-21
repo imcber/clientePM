@@ -53,7 +53,6 @@ const LoginForm = () => {
       }
     },
   });
-
   useEffect(() => {
     if (localStorage.getItem("token")) {
       router.push("/");

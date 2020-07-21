@@ -2,7 +2,6 @@ import React from "react";
 
 const CardSale = ({ data }) => {
   const { id, total, date, products } = data;
-  console.log(products);
   return (
     <div className="md:w-1/4 sm:w-full rounded-lg shadow-lg bg-white flex flex-col justify-between m-2">
       <div className="flex justify-between border-b border-gray-300 px-5 py-4">
