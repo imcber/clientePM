@@ -6,6 +6,10 @@ const Sidebar = () => {
   //routing de next
   const router = useRouter();
   const { pathname } = router;
+  const logOut = () => {
+    localStorage.removeItem("token");
+    router.push("/login");
+  };
   return (
     <div className="sm:min-h-screen sidebar sm:w-1/4 xl:w-1/6">
       <div className="flex xl:w-64 p-4 h-full">
@@ -53,6 +57,7 @@ const Sidebar = () => {
             pathD="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
             type="error"
             extraClass="mt-auto"
+            handlerClick={() => logOut()}
           />
         </ul>
       </div>

@@ -1,14 +1,25 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-const ItemSidebar = ({ target, text, pathD, notif, type, extraClass }) => {
+const ItemSidebar = ({
+  target,
+  text,
+  pathD,
+  notif,
+  type,
+  extraClass,
+  handlerClick,
+}) => {
   //routing de next
   const router = useRouter();
   const { pathname } = router;
   let iconColor = getTypeText(type);
   const actualPath = target === pathname ? "bg-gray-100" : "";
   return (
-    <li className={`my-px ${extraClass}`}>
+    <li
+      className={`my-px ${extraClass ? extraClass : ""}`}
+      onClick={handlerClick ? handlerClick : () => {}}
+    >
       <a
         href={target ? target : "#"}
         className={`flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100 ${iconColor} ${actualPath}`}
