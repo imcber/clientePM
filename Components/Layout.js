@@ -38,10 +38,10 @@ const Layout = ({ children, titlePage }) => {
   }
   return (
     <>
-      <div className="bg-gray-200 h-screen">
-        <div className="sm:flex max-h-screen">
+      <div className="bg-gray-200 h-auto">
+        <div className="sm:flex">
           <Sidebar />
-          <main className="sm:min-h-screen h-screen px-5 main-container sm:w-3/4 xl:w-5/6">
+          <main className="sm:min-h-screen h-auto px-5 main-container sm:w-3/4 xl:w-5/6">
             <div className="">
               <h1 className="text-2xl text-gray-800 foto-sans">{titlePage}</h1>
             </div>

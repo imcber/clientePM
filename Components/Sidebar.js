@@ -12,7 +12,7 @@ const Sidebar = () => {
   };
   return (
     <div className="sm:min-h-screen sidebar sm:w-1/4 xl:w-1/6">
-      <div className="flex xl:w-64 p-4 h-full">
+      <div className="flex w-full p-4 h-full">
         <ul className="flex flex-col w-full">
           <span className="flex justify-center items-center py-8">
             <img src="/logo_large.png" alt="Logo" className="w-32" />
@@ -29,7 +29,7 @@ const Sidebar = () => {
             pathD="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
           />
           <ItemSidebar
-            target="#"
+            target="/nuevaventa"
             text="Nueva venta"
             pathD="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             type="success"
@@ -55,7 +55,8 @@ const Sidebar = () => {
             text="Cerrar sesion"
             pathD="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
             type="error"
-            extraClass="mt-auto"
+            extraClass="flex h-full items-end"
+            aClass="w-full"
             handlerClick={() => logOut()}
           />
         </ul>

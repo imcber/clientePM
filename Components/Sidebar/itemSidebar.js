@@ -9,6 +9,7 @@ const ItemSidebar = ({
   type,
   extraClass,
   handlerClick,
+  aClass,
 }) => {
   //routing de next
   const router = useRouter();
@@ -16,13 +17,13 @@ const ItemSidebar = ({
   let iconColor = getTypeText(type);
   const actualPath = target === pathname ? "bg-gray-100" : "";
   return (
-    <li
-      className={`my-px ${extraClass ? extraClass : ""}`}
-      onClick={handlerClick ? handlerClick : () => {}}
-    >
+    <li className={`my-px ${extraClass ? extraClass : ""}`}>
       <a
         href={target ? target : "#"}
-        className={`flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100 ${iconColor} ${actualPath}`}
+        className={`flex flex-row items-center h-12 px-4 rounded-lg text-gray-600 hover:bg-gray-100 ${iconColor} ${actualPath} ${
+          aClass ? aClass : ""
+        }`}
+        onClick={handlerClick ? handlerClick : () => {}}
       >
         <span className="flex items-center justify-center ">
           <svg
