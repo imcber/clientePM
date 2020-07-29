@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../Components/Layout";
 
-const NuevaVenta = () => {
+const NewSale = () => {
   return (
     <Layout titlePage={"Nueva Venta"}>
       <div className="mt-6 w-full flex justify-center items-center">
@@ -33,4 +33,4 @@ const NuevaVenta = () => {
   );
 };
 
-export default NuevaVenta;
+export default NewSale;

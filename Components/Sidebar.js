@@ -29,14 +29,14 @@ const Sidebar = () => {
             pathD="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
           />
           <ItemSidebar
-            target="/nuevaventa"
+            target="/newsale"
             text="Nueva venta"
             pathD="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             type="success"
           />
           <TextSideBar text={"Negocio"} />
           <ItemSidebar
-            target="#"
+            target="/products"
             text="Productos"
             pathD="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
           />
