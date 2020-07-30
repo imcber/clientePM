@@ -14,6 +14,15 @@ const GET_ALL_PRODUCTS = gql`
   }
 `;
 
+const NEW_PRODUCT = gql`
+  mutation newProduct($input: ProductInput) {
+    newProduct(input: $input) {
+      id
+      name
+    }
+  }
+`;
+
 const Products = () => {
   const { loading, error, data } = useQuery(GET_ALL_PRODUCTS);
 
@@ -41,11 +50,10 @@ const Products = () => {
               />
             </svg>
           </span>
-
           <input
-            className="w-full border rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="Search"
+            type="search"
+            class="w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+            placeholder="Buscar..."
           />
         </div>
       </div>
@@ -53,10 +61,10 @@ const Products = () => {
         <OpenTable headers={["Nombre", "Precio", "Cantidad", "Acciones"]}>
           {getListProducts.map(({ id, name, price, amount }) => (
             <tr key={id} className="hover:bg-gray-100 border-b border-gray-200">
-              <td className={`px-2 py-4`}>{name}</td>
-              <td className={`px-2 py-4`}>{price}</td>
-              <td className={`px-2 py-4`}>{amount}</td>
-              <td className={`px-2 py-4 flex justify-center items-center`}>
+              <td className={`px-2 py-1`}>{name}</td>
+              <td className={`px-2 py-1`}>$ {price}</td>
+              <td className={`px-2 py-1`}>{amount}</td>
+              <td className={`px-2 py-1 flex justify-center items-center`}>
                 <button className="w-2/5 mx-2 py-2 text-white bg-blue-600 rounded-full hover:bg-blue-800 focus:outline-none focus:shadow-outline">
                   Editar
                 </button>
