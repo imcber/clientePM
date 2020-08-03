@@ -3,8 +3,11 @@ import React from "react";
 const Pagination = ({ handlePage, numPage, pages }) => {
   //Create array of numbers for pagination
   const arrayPages = [];
-  for (let i = 1; i < pages + 1; i++) {
+  for (let i = 1; i < 7 + 1; i++) {
     arrayPages.push(i);
+  }
+  if (pages > 7) {
+    arrayPages.push(pages);
   }
 
   const checkNext = () => {

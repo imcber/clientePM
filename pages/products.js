@@ -1,36 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../Components/Layout";
-import { OpenTable } from "../Components/Table/OpenTable";
-import { gql, useQuery } from "@apollo/client";
-
-const GET_ALL_PRODUCTS = gql`
-  query getListProducts {
-    getListProducts {
-      id
-      name
-      amount
-      price
-    }
-  }
-`;
-
-const NEW_PRODUCT = gql`
-  mutation newProduct($input: ProductInput) {
-    newProduct(input: $input) {
-      id
-      name
-    }
-  }
-`;
+import TableProducts from "../Components/Products/TableProducts";
 
 const Products = () => {
-  const { loading, error, data } = useQuery(GET_ALL_PRODUCTS);
-
-  if (loading) return "Loading";
-  if (error) return "Error";
-  if (!data) return "Sin data";
-  const { getListProducts } = data;
-
   return (
     <Layout titlePage={"Productos"}>
       <div className="mt-6 w-full flex flex-col justify-center items-center">
@@ -52,29 +24,13 @@ const Products = () => {
           </span>
           <input
             type="search"
-            class="w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+            className="w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium"
             placeholder="Buscar..."
           />
         </div>
       </div>
       <div className="w-full">
-        <OpenTable headers={["Nombre", "Precio", "Cantidad", "Acciones"]}>
-          {getListProducts.map(({ id, name, price, amount }) => (
-            <tr key={id} className="hover:bg-gray-100 border-b border-gray-200">
-              <td className={`px-2 py-1`}>{name}</td>
-              <td className={`px-2 py-1`}>$ {price}</td>
-              <td className={`px-2 py-1`}>{amount}</td>
-              <td className={`px-2 py-1 flex justify-center items-center`}>
-                <button className="w-2/5 mx-2 py-2 text-white bg-blue-600 rounded-full hover:bg-blue-800 focus:outline-none focus:shadow-outline">
-                  Editar
-                </button>
-                <button className="w-2/5 mx-2 py-2 text-white bg-red-600 rounded-full hover:bg-red-800 focus:outline-none focus:shadow-outline">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          ))}
-        </OpenTable>
+        <TableProducts />
       </div>
     </Layout>
   );
