@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { OpenTable } from "../Table/OpenTable";
 import { gql, useQuery } from "@apollo/client";
 import Pagination from "../Dashboard/Pagination";
@@ -23,6 +23,7 @@ const PRODUCTS_COUNT = gql`
 const TableProducts = () => {
   const [page, setPage] = useState(1);
   const [numRegister, setNumRegister] = useState(10);
+  const [dataTable, setDataTable] = useState([]);
   //QUERY
   const dataCount = useQuery(PRODUCTS_COUNT, { variables: { numRegister } });
   const { data, loading, error } = useQuery(GET_ALL_PRODUCTS, {
@@ -34,6 +35,7 @@ const TableProducts = () => {
   if (!data || !dataCount.data) return "Sin data";
   const { getListProducts } = data;
   const { getCountProducts } = dataCount.data;
+
   return (
     <>
       <select
@@ -44,7 +46,10 @@ const TableProducts = () => {
         <option value={20}>20</option>
         <option value={30}>30</option>
       </select>
-      <OpenTable headers={["Nombre", "Precio", "Cantidad", "Acciones"]}>
+      <OpenTable
+        bodyHeigth={"30rem"}
+        headers={["Nombre", "Precio", "Cantidad", "Acciones"]}
+      >
         {getListProducts.map(({ id, name, price, amount }) => (
           <tr key={id} className="hover:bg-gray-100 border-b border-gray-200">
             <td className={`px-2 py-1`}>{name}</td>

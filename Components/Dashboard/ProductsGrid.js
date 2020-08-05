@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "./Pagination";
+import { OpenTable } from "../Table/OpenTable";
 import { gql, useQuery } from "@apollo/client";
 import moment from "moment";
 
@@ -53,39 +54,28 @@ const ProductGrid = () => {
       <div className="flex justify-between w-full">
         <h2 className="ml-3">Estatus de productos</h2>
       </div>
-      <div className="overflow-x-auto mt-6 bg-white rounded-md">
-        <table className="table-auto border-collapse w-full">
-          <thead>
-            <tr className="rounded-lg text-sm font-medium text-gray-700 text-left">
-              <th className="px-4 py-2 ">Nombre</th>
-              <th className="px-4 py-2 ">Cantidad</th>
-              <th className="px-4 py-2 ">Restock</th>
+      <OpenTable
+        bodyHeigth={"20rem"}
+        headers={["Nombre", "Cantidad", "Restock"]}
+      >
+        {listWithStatus.map(
+          ({ id, name, status, amount, restock, statusClass }) => (
+            <tr key={id} className="hover:bg-gray-100 border-b border-gray-200">
+              <td className="px-4 py-4">{name}</td>
+              <td
+                className={`px-4 py-4 ${statusClass}`}
+              >{`${amount} - ${status}`}</td>
+              <td className="px-4 py-4">{restock}</td>
             </tr>
-          </thead>
-          <tbody className="text-sm font-normal text-gray-700">
-            {listWithStatus.map(
-              ({ id, name, status, amount, restock, statusClass }) => (
-                <tr
-                  key={id}
-                  className="hover:bg-gray-100 border-b border-gray-200"
-                >
-                  <td className="px-4 py-4">{name}</td>
-                  <td
-                    className={`px-4 py-4 ${statusClass}`}
-                  >{`${amount} - ${status}`}</td>
-                  <td className="px-4 py-4">{restock}</td>
-                </tr>
-              )
-            )}
-            <tr className="hover:bg-gray-100 border-b border-gray-200 py-10"></tr>
-          </tbody>
-        </table>
-        <Pagination
-          handlePage={setPage}
-          numPage={page}
-          pages={getNumLessProducts}
-        />
-      </div>
+          )
+        )}
+        <tr className="hover:bg-gray-100 border-b border-gray-200 py-10"></tr>
+      </OpenTable>
+      <Pagination
+        handlePage={setPage}
+        numPage={page}
+        pages={getNumLessProducts}
+      />
     </div>
   );
 };
